@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>С Днем Святого Валентина!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+    .container {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.5em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .heart {
+      font-size: 4em;
+      margin-bottom: 20px;
+    }
+    .btn {
+      padding: 12px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 10px;
+      transition: background 0.3s;
+    }
+    .btn-love {
+      background-color: #ff4d4d;
+    }
+    .btn-love:hover {
+      background-color: #e60000;
+    }
+    .btn-message {
+      background-color: #4d94ff;
+    }
+    .btn-message:hover {
+      background-color: #005ce6;
+    }
+    #messageBox {
+      margin-top: 20px;
+      font-size: 1.3em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="heart">❤️</div>
+    <h1>С Днем Святого Валентина, [Имя]!</h1>
+    <button class="btn btn-love" id="loveBtn">Отправить любовь</button>
+    <button class="btn btn-message" id="messageBtn">Получить сообщение</button>
+    <div id="messageBox"></div>
+  </div>
+
+  <script>
+    document.getElementById('loveBtn').addEventListener('click', function() {
+      alert('Ты особенный для меня!');
+    });
+
+    document.getElementById('messageBtn').addEventListener('click', function() {
+      const messages = [
+        'Ты озаряешь мой мир!',
+        'Моя любовь к тебе безгранична!',
+        'Ты — мое вдохновение!',
+        'С тобой каждый день — праздник!'
+      ];
+      const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById('messageBox').innerText = randomMessage;
+    });
+  </script>
+</body>
+</html>
