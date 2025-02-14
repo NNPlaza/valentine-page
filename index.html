@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>С Днем Святого Валентина!</title>
   <style>
+    /* Основные стили */
     body {
       margin: 0;
       padding: 0;
@@ -54,18 +55,28 @@
       cursor: pointer;
       margin: 10px;
       transition: background 0.3s;
+      color: #333;
     }
+    /* Кнопка "Отправить любовь" - мягкий розовый */
     .btn-love {
-      background-color: #ff4d4d;
+      background-color: #f7cac9;
     }
     .btn-love:hover {
-      background-color: #e60000;
+      background-color: #e9a8a1;
     }
+    /* Кнопка "Получить сообщение" - нежный голубой */
     .btn-message {
-      background-color: #4d94ff;
+      background-color: #a3d2ff;
     }
     .btn-message:hover {
-      background-color: #005ce6;
+      background-color: #89bbf3;
+    }
+    /* Новая кнопка "Показать поэму" - пастельный лавандовый */
+    .btn-poem {
+      background-color: #d6b3ff;
+    }
+    .btn-poem:hover {
+      background-color: #c1a0ff;
     }
     #messageBox {
       margin-top: 20px;
@@ -89,6 +100,41 @@
         opacity: 0;
       }
     }
+    /* Модальное окно с поэмой */
+    .modal {
+      display: none; /* Скрыто по умолчанию */
+      position: fixed;
+      z-index: 20;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.7);
+    }
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 10px;
+      color: #333;
+      text-align: left;
+      position: relative;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover,
+    .close:focus {
+      color: black;
+    }
     /* Медиазапросы для мобильных устройств */
     @media (max-width: 600px) {
       .container {
@@ -110,28 +156,62 @@
 <body>
   <div class="container">
     <div class="heart">🐭❤️🐭</div>
-    <h1>С Днем Святого Валентина, Мыыыыыыыф!</h1>
-    <button class="btn btn-love" id="loveBtn">Секретная любовь</button>
+    <h1>С Днем Святого Валентина, Мыыыыыыыыыыыф!</h1>
+    <button class="btn btn-love" id="loveBtn">Секретная любовь!</button>
     <button class="btn btn-message" id="messageBtn">Получить сообщение</button>
+    <button class="btn btn-poem" id="poemBtn">Показать поэму</button>
     <div id="messageBox"></div>
   </div>
-  
+
+  <!-- Модальное окно с поэмой -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="modalClose">&times;</span>
+      <h2>Любовное стихотворение</h2>
+      <p>
+        Люблю тебя мой лучик света,<br>
+        Как лучшую на свете Мышь,<br>
+        И вот мои слова поэта,<br>
+        Давай уже быстрей домой 😂.
+      </p>
+    </div>
+  </div>
+
   <script>
-    // Обработчики для кнопок
+    // Обработчик кнопки "Отправить любовь"
     document.getElementById('loveBtn').addEventListener('click', function() {
       alert('Курятинааааааааааааа!');
     });
 
+    // Обработчик кнопки "Получить сообщение"
     document.getElementById('messageBtn').addEventListener('click', function() {
       const messages = [
         'Ты самая красивая!',
         'Очень тебя люблю!!',
         'Ты — мое вдохновение!',
         'С тобой очень уютно!',
-        'Обожаю тебя!'
+        'Обожаю тебя'
       ];
       const randomMessage = messages[Math.floor(Math.random() * messages.length)];
       document.getElementById('messageBox').innerText = randomMessage;
+    });
+
+    // Обработчик для кнопки "Показать поэму"
+    document.getElementById('poemBtn').addEventListener('click', function() {
+      document.getElementById('modal').style.display = 'block';
+    });
+
+    // Закрытие модального окна при клике на "×"
+    document.getElementById('modalClose').addEventListener('click', function() {
+      document.getElementById('modal').style.display = 'none';
+    });
+
+    // Закрытие модального окна при клике вне его содержимого
+    window.addEventListener('click', function(event) {
+      const modal = document.getElementById('modal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
     });
 
     // Функция для создания падающих сердечек
